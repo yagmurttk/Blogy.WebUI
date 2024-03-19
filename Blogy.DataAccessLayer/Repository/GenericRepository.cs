@@ -10,35 +10,36 @@ namespace Blogy.DataAccessLayer.Repository
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        private readonly BlogyContext _contex;
+        BlogyContext _context = new BlogyContext();
+
         public void Delete(int id)
         {
-            var values = _contex.Set<T>().Find(id);
-            _contex.Set<T>().Remove(values);
-            _contex.SaveChanges();
+            var values = _context.Set<T>().Find(id);
+            _context.Set<T>().Remove(values);
+            _context.SaveChanges();
         }
 
         public T GetById(int id)
         {
-            return _contex.Set<T>().Find(id);
+            return _context.Set<T>().Find(id);
 
         }
 
         public List<T> GetListAll()
         {
-            return _contex.Set<T>().ToList();
+            return _context.Set<T>().ToList();
         }
 
         public void Insert(T entity)
         {
-            _contex.Set<T>().Add(entity);
-            _contex.SaveChanges();
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
 
         public void Update(T entity)
         {
-            _contex.Set<T>().Update(entity);
-            _contex.SaveChanges();
+            _context.Set<T>().Update(entity);
+            _context.SaveChanges();
         }
     }
 }
