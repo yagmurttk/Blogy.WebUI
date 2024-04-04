@@ -1,5 +1,4 @@
-﻿
-﻿@{
+﻿﻿@{
     Layout = null;
 }
 
@@ -10,7 +9,7 @@
 
     @await Component.InvokeAsync("_BlogListNavbarComponentPartial")
 
-    @await Component.InvokeAsync("_BlogDetailByCoverInfoComponentPartial")
+    @await Component.InvokeAsync("_BlogDetailByCoverInfoComponentPartial", new { id = ViewBag.i })
 
     <section class="section">
         <div class="container">
@@ -19,9 +18,9 @@
 
                 <div class="col-md-12 col-lg-8 main-content">
 
-                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial", new { id = ViewBag.i })
 
-                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial")
+                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial", new { id = ViewBag.i })
 
                 </div>
 
@@ -33,15 +32,15 @@
                         </form>
                     </div>
 
-                    @await Component.InvokeAsync("_BlogDetailByWriterInfoComponentPartial")
-                
+                    @await Component.InvokeAsync("_BlogDetailByWriterInfoComponentPartial", new { id = ViewBag.i })
+
                     @await Component.InvokeAsync("_BlogDetailGetOtherBlogPostByWriterComponentPartial")
 
                     @await Component.InvokeAsync("_BlogDetailCategoryListComponentPartial")
 
                     @await Component.InvokeAsync("_BlogDetailTagsComponentPartial")
-                                      
-                </div>  
+
+                </div>
 
             </div>
         </div>
